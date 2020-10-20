@@ -1,0 +1,41 @@
+<!--pages/account/index.wxml-->
+<view class="account-index">
+  <page>
+    <navigation slot="navigation">
+      <view class="navigation-wrap">
+        <view class="left" style="height:{{titleBarHeight}}px; width:{{titleBarHeight}}px" bindtap="handleBackClick">
+          <text class="fa fa-chevron-left left"></text>
+        </view>
+        <view>
+          <text>我的账号</text>
+        </view>
+      </view>
+    </navigation>
+    <view slot="container" class="container">
+      <view style="height: 48rpx;"></view>
+      <view>
+        <view class="row" style="align: center;">
+          <avatar src="{{userInfo.avatarUrl}}" size="48"></avatar>
+          <view style="width: 32rpx;"></view>
+          <view style="font-weight: bold; text-align: center; font-size: 42rpx; display: flex; align-items: center;">
+            <text>{{userInfo.nickName}}</text>
+          </view>
+        </view>
+      </view>
+      <view style="height: 64rpx;"></view>
+      <view>
+        <view>
+          <navigator class="menu-item"  open-type="navigate" url="/pages/destroy/index">
+            <view>删除账号</view>
+          </navigator>
+          <navigator class="menu-item" bindtap="handleLogoutClick">
+            <view>退出登录</view>
+          </navigator>
+          <navigator class="menu-item" open-type="navigate" url="/pages/about/index">
+            <view>关于应用</view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </page>
+</view>

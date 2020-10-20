@@ -1,0 +1,53 @@
+/* pages/score/index.wxss */
+.container {
+  padding: 8px;
+}
+
+.score-index {
+  background: rgba(255, 228, 181, 0.5);
+  min-height: 100vh;
+}
+
+.score-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-wrap .score-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250rpx;
+  height: 250rpx;
+  background: rgba(135, 206, 250, 0.4);
+  backdrop-filter: blur(5px);
+  color: white;
+  border-radius: 25rpx;
+}
+
+.score-text text {
+  font-size: 64rpx;
+  font-weight: bold;
+}
+
+.recommend-navigator{
+  background: rgba(255, 255, 255, 0.4);
+  padding: 32rpx;
+}
+
+.recommend image{
+  width: 128rpx;
+  height: 128rpx;
+  object-fit: cover;
+}
+
+.recommend .title{
+  height: 50%;
+  font-weight: bold;
+}
+
+.recommend .detail{
+  height: 50%;
+  font-size: 24rpx;
+}

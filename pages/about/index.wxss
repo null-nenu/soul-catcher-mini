@@ -1,0 +1,9 @@
+/* pages/about/index.wxss */
+.about-index {
+  background: rgba(255, 228, 181, 0.5);
+  min-height: 100vh;
+}
+
+.container {
+  padding: 8px;
+}

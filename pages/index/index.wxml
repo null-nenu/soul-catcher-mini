@@ -1,13 +1,35 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+
+<view class="full-screen column" style="background:url({{backgroundImage}}); background-size: cover;">
+  <navigation>
+    <view class="header" style="height: {{titleBarHeight}}px">
+      <view>
+        <!-- user logo -->
+        <avatar wx:if="{{userInfo.avatarUrl != null}}" src="{{userInfo.avatarUrl}}" size="{{titleBarHeight - 5}}" bindtap="handleLogoClick"></avatar>
+        <text wx:if="{{userInfo.avatarUrl == null}}" class="fa fa-user" style="font-size: 48rpx; color: rgba(255, 228, 181, 0.8);" bindtap="handleLoginClick"></text>
+      </view>
+    </view>
+  </navigation>
+
+  <!-- body -->
+  <view class="body" style="padding-top: 32px;">
+    <!-- start test button -->
+    <button class="button-size-large button-color-normal" style="width: 128px; height:128px;"
+      bindtap="handleTestsClick">
+      <view>开始测试</view>
+    </button>
+    <!-- daily words -->
+    <view style="padding-top: 32px;">
+      <view style="text-align:center; color: rgba(255, 255, 255, 0.9); font-size:24px;">{{dailyWords}}</view>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <!-- footor -->
+  <view class="footor">
+    <view class="row">
+      <!-- stories button -->
+      <button class="button-size-normal button-color-normal" style="width: 100px; padding: 8px;">散散心</button>
+      <!-- history button -->
+      <button class="button-size-normal button-color-normal" style="width: 100px; padding: 8px;">看历史</button>
+    </view>
   </view>
 </view>

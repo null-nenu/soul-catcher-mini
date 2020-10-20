@@ -1,0 +1,14 @@
+/* pages/account/index.wxss */
+.account-index {
+  background: rgba(255, 228, 181, 0.5);
+  min-height: 100vh;
+}
+
+.container {
+  padding: 8px;
+}
+
+.menu-item{
+  background: rgba(255, 255, 255, 0.4);
+  padding: 32rpx;
+}

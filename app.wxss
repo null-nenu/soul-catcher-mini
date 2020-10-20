@@ -1,10 +1,63 @@
 /**app.wxss**/
-.container {
-  height: 100%;
+@import '/font-awesome/font-awesome.wxss';
+
+.full-screen {
+  width: 100%;
+  height: 100vh;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
   display: flex;
   flex-direction: column;
+}
+
+.button-size-large{
+  width: 128px;
+  height: 128px;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
+  border-radius: 32px;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.button-size-normal{
+  width: 32px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-color-normal{
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  color: white;
+}
+
+.button-color-normal:active{
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.navigation-wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+
+.navigation-wrap .left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation-wrap .left:active{
+  background-color: rgba(255, 228, 181, 0.7);
+}

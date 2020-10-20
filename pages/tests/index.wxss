@@ -1,0 +1,13 @@
+/* pages/tests/index.wxss */
+.tests-index{
+  background: rgba(255, 228, 181, 0.5);
+  min-height: 100vh;
+}
+
+.navigation-wrap .left:active{
+  background-color: rgba(255, 228, 181, 0.7);
+}
+
+.container{
+  padding: 8px;
+}

@@ -1,0 +1,7 @@
+<!--components/navigation/index.wxml-->
+<view>
+  <view style="height:{{statusBarHeight}}px;"></view>
+  <view style="height:{{titleBarHeight}}px;">
+    <slot></slot>
+  </view>
+</view>

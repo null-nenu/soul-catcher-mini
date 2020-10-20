@@ -1,0 +1,4 @@
+<!--pages/viewer/index.wxml-->
+<view>
+  <web-view src="https://mp.weixin.qq.com/"></web-view>
+</view>

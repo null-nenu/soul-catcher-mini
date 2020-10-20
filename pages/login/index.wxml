@@ -1,0 +1,22 @@
+<!--pages/login/index.wxml-->
+<view class="login-index">
+  <page>
+    <navigation slot="navigation">
+      <view class="navigation-wrap">
+        <view class="left" style="height:{{titleBarHeight}}px; width:{{titleBarHeight}}px" bindtap="handleBackClick">
+          <text class="fa fa-chevron-left left"></text>
+        </view>
+        <view>
+          <text>登录</text>
+        </view>
+      </view>
+    </navigation>
+    <view slot="container" class="container">
+      <view style="height: 64rpx;"></view>
+      <view>
+        <button open-type="getUserInfo" bindgetuserinfo="handleLoginClick">使用微信登录</button>
+      </view>
+      
+    </view>
+  </page>
+</view>

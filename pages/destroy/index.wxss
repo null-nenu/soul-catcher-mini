@@ -1,0 +1,16 @@
+/* pages/destroy/index.wxss */
+.destroy-index {
+  background: rgba(255, 228, 181, 0.5);
+  min-height: 100vh;
+}
+
+.container {
+  padding: 8px;
+}
+
+.destroy-note {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 32rpx;
+  padding: 32rpx;
+  font-size: 32rpx;
+}

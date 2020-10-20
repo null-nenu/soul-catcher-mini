@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "navigation": "/components/navigation",
+    "page": "/components/page",
+    "avatar": "/components/avatar"
+  }
+}

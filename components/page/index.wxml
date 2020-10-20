@@ -1,0 +1,9 @@
+<!--components/page/index.wxml-->
+<view>
+  <view style="width:100vw; height:{{statusBarHeight+titleBarHeight}}px">
+    <slot name="navigation"></slot>
+  </view>
+  <view style="width:100vw; height:calc(100vh - {{statusBarHeight+titleBarHeight}}px); overflow-y: auto;">
+    <slot name="container"></slot>
+  </view>
+</view>

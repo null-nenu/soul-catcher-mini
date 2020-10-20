@@ -1,0 +1,52 @@
+<!--pages/score/index.wxml-->
+<view class="score-index">
+  <page>
+    <navigation slot="navigation">
+      <view class="navigation-wrap">
+        <view class="left" style="height:{{titleBarHeight}}px; width:{{titleBarHeight}}px" bindtap="handleBackClick">
+          <text class="fa fa-chevron-left left"></text>
+        </view>
+      </view>
+    </navigation>
+    <view slot="container" class="container">
+      <view style="height: 64rpx;"></view>
+      <!-- score -->
+      <view>
+        <view>
+          <!-- score board -->
+          <view class="score-wrap">
+            <view class="score-text">
+              <text>{{score}}</text>
+            </view>
+          </view>
+          <view style="height: 32rpx;"></view>
+          <view style="display: flex; justify-content: center;">
+            <text style="color: grey; font-weight: bold; font-size: 48rpx;">{{socreText}}</text>
+          </view>
+          <view style="height: 32rpx;"></view>
+          <view style="font-size: 34rpx;">
+            {{note}}{{noteLink}}
+          </view>
+        </view>
+      </view>
+      <view style="height: 64rpx;"></view>
+      <!-- recommends -->
+      <view>
+        <view>
+          <view wx:for="{{recommends}}" wx:for-item="recommend" wx:key="{{index}}">
+            <navigator url="/pages/viewer/index" open-type="navigate" class="recommend-navigator">
+              <view class="row recommend">
+                <image src="{{recommend.image}}"></image>
+                <view style="width: 32rpx;"></view>
+                <view>
+                  <view class="title">{{recommend.title}}</view>
+                  <view class="detail">{{recommend.text}}</view>
+                </view>
+              </view>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+  </page>
+</view>

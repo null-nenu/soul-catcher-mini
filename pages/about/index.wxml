@@ -1,0 +1,25 @@
+<!--pages/about/index.wxml-->
+<view class="about-index">
+  <page>
+    <navigation slot="navigation">
+      <view class="navigation-wrap">
+        <view class="left" style="height:{{titleBarHeight}}px; width:{{titleBarHeight}}px" bindtap="handleBackClick">
+          <text class="fa fa-chevron-left left"></text>
+        </view>
+        <view>
+          <text>关于应用</text>
+        </view>
+      </view>
+    </navigation>
+    <view slot="container" class="container">
+      <view style="height: 128rpx;"></view>
+      <view style="display: flex; justify-content: center; align-items:center;" class="column">
+        <image src="/static/images/logo.png" style="width: 256rpx; height: 256rpx; object-fix: cover;"></image>
+        <view style="height: 32rpx;"></view>
+        <view>
+          <text>版本: 0.0.1 (原型)</text>
+        </view>
+      </view>
+    </view>
+  </page>
+</view>

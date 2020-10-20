@@ -1,0 +1,4 @@
+<!--components/avatar/index.wxml-->
+<view style="width: {{size}}px; height: {{size}}px">
+  <image src="{{src}}" class="avatar-image"></image>
+</view>

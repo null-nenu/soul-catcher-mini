@@ -1,0 +1,62 @@
+/* pages/question/index.wxss */
+.question-index {
+  background: rgba(255, 228, 181, 0.5);
+  min-height: 100vh;
+}
+
+.container {
+  padding: 8px;
+}
+
+.music-control {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 48rpx;
+}
+
+.music-control .button {
+  display: flex;
+  border-radius: 50%;
+  width: 48rpx;
+  height: 48rpx;
+  padding: 10rpx;
+  background: rgba(255, 255, 255, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.music-control .button text {
+  margin: auto;
+}
+
+.music-control .button:active {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.question .question-tip {
+  color: rgba(173, 216, 230, 0.7);
+  font-weight: bold;
+  font-size: 24rpx;
+  padding-bottom: 16rpx;
+}
+
+.question .question-card {
+  padding: 32rpx;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  color: rgba(128, 128, 128, 1);
+  border-radius: 32rpx;
+  font-size: 38rpx;
+}
+
+.question .question-option {
+  margin-bottom: 32rpx;
+  color: rgba(128, 128, 128, 0.8);
+  font-size: 32rpx;
+}
+
+.question .question-option:active {
+  background: rgba(255, 255, 255, 0.6);
+}
