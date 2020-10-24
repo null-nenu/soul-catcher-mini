@@ -4,7 +4,7 @@
 }
 
 .score-index {
-  background: rgba(255, 228, 181, 0.5);
+  background: rgba(245, 245, 245, 0.7);
   min-height: 100vh;
 }
 
@@ -20,9 +20,9 @@
   align-items: center;
   width: 250rpx;
   height: 250rpx;
-  background: rgba(135, 206, 250, 0.4);
+  background: rgba(220, 220, 220, 0.5);
   backdrop-filter: blur(5px);
-  color: white;
+  color: rgba(105, 105, 105, 0.75);
   border-radius: 25rpx;
 }
 
@@ -31,23 +31,30 @@
   font-weight: bold;
 }
 
-.recommend-navigator{
+.score-content {
+  color: rgba(105, 105, 105, 0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.recommend-navigator {
   background: rgba(255, 255, 255, 0.4);
   padding: 32rpx;
 }
 
-.recommend image{
+.recommend image {
   width: 128rpx;
   height: 128rpx;
   object-fit: cover;
 }
 
-.recommend .title{
+.recommend .title {
   height: 50%;
   font-weight: bold;
 }
 
-.recommend .detail{
+.recommend .detail {
   height: 50%;
   font-size: 24rpx;
 }

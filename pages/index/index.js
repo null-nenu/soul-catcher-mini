@@ -51,6 +51,12 @@ Page({
   },
 
   onShow: function () {
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo.userInfo,
+        hasUserInfo: true
+      })
+    }
   },
 
   getUserInfo: function (e) {
@@ -90,7 +96,7 @@ Page({
       url: app.globalData.host + "/api/setting/app_config/",
       success: (res) => {
         this.setData({
-          backgroundImage: res.data.background ? app.globalData.host + res.data.background : this.data.backgroundImage,
+          backgroundImage: res.data.background ? app.globalData.host + res.data.background : "/static/images/background.jpg",
           dailyWords: res.data.solgan ? res.data.solgan : this.data.dailyWords
         });
       }

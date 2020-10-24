@@ -16,7 +16,7 @@
           <!-- score board -->
           <view class="score-wrap">
             <view class="score-text">
-              <text>{{score}}</text>
+              <text>{{detail.level}}</text>
             </view>
           </view>
           <view style="height: 32rpx;"></view>
@@ -24,8 +24,8 @@
             <text style="color: grey; font-weight: bold; font-size: 48rpx;">{{socreText}}</text>
           </view>
           <view style="height: 32rpx;"></view>
-          <view style="font-size: 34rpx;">
-            {{note}}{{noteLink}}
+          <view style="font-size: 34rpx;" class="score-content">
+            <text>{{detail.content}}</text>
           </view>
         </view>
       </view>

@@ -7,7 +7,7 @@
           <text class="fa fa-chevron-left left"></text>
         </view>
         <view>
-          <text>关于应用</text>
+          <text>删除账号</text>
         </view>
       </view>
     </navigation>
@@ -18,7 +18,7 @@
       <view style="height: 64rpx;"></view>
       <view class="row" style="display:flex; justify-content: flex-end;">
         <button class="button-size-normal button-color-normal" bindtap="handleDestroyClick"
-          style="width: 100px; padding: 8px; color:rgb(255, 145, 145)">删除</button>
+          style="width: 100px; padding: 8px; color:rgb(255, 145, 145); background: rgba(220, 220, 220, 0.5);">删除</button>
       </view>
     </view>
   </page>

@@ -1,6 +1,6 @@
 /* pages/about/index.wxss */
 .about-index {
-  background: rgba(255, 228, 181, 0.5);
+  background: rgba(245, 245, 245, 0.7);
   min-height: 100vh;
 }
 

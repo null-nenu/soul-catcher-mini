@@ -24,7 +24,7 @@
       </view>
       <view style="height: 64rpx;"></view>
       <view>
-        <view>
+        <view class="menu-wrap">
           <navigator class="menu-item"  open-type="navigate" url="/pages/destroy/index">
             <view>删除账号</view>
           </navigator>

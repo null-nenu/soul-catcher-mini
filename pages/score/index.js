@@ -7,18 +7,24 @@ Page({
    */
   data: {
     titleBarHeight: app.globalData.titleBarHeight,
-    score: 0,
-    socreText: "",
-    note: "",
-    noteLink: "",
-    recommends: []
+    detail: {}
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    
+    if (options.id) {
+      this.fetchEvaluationRecord(options.id);
+    } else {
+      wx.showToast({
+        title: '我们遇到了一点小问题，请原谅。',
+      });
+
+      wx.redirectTo({
+        url: '/pages/index/index',
+      });
+    }
   },
 
   /**
@@ -76,55 +82,19 @@ Page({
     });
   },
 
-  fetchRate: function () {
+  fetchEvaluationRecord: function (id) {
     wx.showLoading({
-      title: "评测中...",
+      title: "获取评测结果中..."
     });
 
-    setTimeout(() => {
-      wx.hideLoading();
-      let recommends = [{
-          image: "https://movieberry.com/static/photos/41431/50_midi.jpg",
-          id: "",
-          url: "",
-          title: "Fly Away Home",
-          text: "温暖和治愈"
-        },
-        {
-          image: "https://movieberry.com/static/photos/41431/50_midi.jpg",
-          id: "",
-          url: "",
-          title: "Fly Away Home",
-          text: "温暖和治愈"
-        },
-        {
-          image: "https://movieberry.com/static/photos/41431/50_midi.jpg",
-          id: "",
-          url: "",
-          title: "Fly Away Home",
-          text: "温暖和治愈"
-        },
-        {
-          image: "https://movieberry.com/static/photos/41431/50_midi.jpg",
-          id: "",
-          url: "",
-          title: "Fly Away Home",
-          text: "温暖和治愈"
-        }, {
-          image: "https://movieberry.com/static/photos/41431/50_midi.jpg",
-          id: "",
-          url: "",
-          title: "Fly Away Home",
-          text: "温暖和治愈"
-        }
-      ];
-      this.setData({
-        score: 51,
-        socreText: "完美状态",
-        note: "一切看起来很好，继续保持心情愉快哦",
-        noteLink: "",
-        recommends: recommends
-      })
-    }, 3000);
+    wx.request({
+      url: app.globalData.host + '/api/evaluation_record/' + id + '/details/',
+      success: (res) => {
+        wx.hideLoading();
+        this.setData({
+          detail: res.data
+        })
+      }
+    });
   }
 })

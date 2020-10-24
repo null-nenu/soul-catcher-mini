@@ -1,6 +1,6 @@
 /* pages/account/index.wxss */
 .account-index {
-  background: rgba(255, 228, 181, 0.5);
+  background: rgba(245, 245, 245, 0.7);
   min-height: 100vh;
 }
 
@@ -8,7 +8,12 @@
   padding: 8px;
 }
 
+.menu-wrap{
+  background: rgba(220, 220, 220, 0.5);
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
 .menu-item{
-  background: rgba(255, 255, 255, 0.4);
   padding: 32rpx;
 }

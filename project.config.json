@@ -84,10 +84,10 @@
           "scene": null
         },
         {
-          "id": -1,
+          "id": 2,
           "name": "pages/score/index",
           "pathName": "pages/score/index",
-          "query": "",
+          "query": "id=1",
           "scene": null
         },
         {

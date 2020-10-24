@@ -83,5 +83,11 @@ Page({
         }
       }
     })
+  },
+
+  handleBackClick: function () {
+    wx.navigateBack({
+      delta: 0,
+    });
   }
 })

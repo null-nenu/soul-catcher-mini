@@ -13,7 +13,7 @@ Page({
     questionIndex: -1,
     id: 0,
     music: "",
-    audio: {},
+    audio: null,
     choise: []
   },
 
@@ -22,13 +22,22 @@ Page({
    */
   onLoad: function (options) {
     this.setData(options.id);
-    this.fetchConfig();
-    this.setData({
-      audio: wx.createInnerAudioContext()
-    });
     if (options.id) {
       this.fetchEvaluationDetail(options.id);
+      if (this.data.audio == null) {
+        this.setData({
+          audio: wx.createInnerAudioContext()
+        });
+      }
+      this.fetchConfig();
     } else { // can't get id, show error and back
+      if (this.data.audio) {
+        this.data.audio.stop();
+        this.data.audio.destory();
+        this.setData({
+          audio: null
+        });
+      }
       wx.showToast({
         title: '我们好像遇到问题了，换一个量表试试吧。',
         icon: 'none'
@@ -67,7 +76,6 @@ Page({
    */
   onUnload: function () {
     this.data.audio.stop();
-    //this.data.audio.destory();
   },
 
   /**
@@ -102,9 +110,11 @@ Page({
       cancelText: "再想想",
       cancelColor: 'cancelColor',
       success: (res) => {
-        wx.redirectTo({
-          url: "/pages/index/index"
-        })
+        if (res.confirm) {
+          wx.redirectTo({
+            url: "/pages/index/index"
+          })
+        }
       }
     })
   },
@@ -199,7 +209,6 @@ Page({
 
       let postData = {
         evaluation: this.data.evaluation.id,
-        question: this.data.evaluation.questions.map((item) => item.id),
         options: new_choise
       }
 
@@ -227,7 +236,6 @@ Page({
         });
 
         this.data.audio.src = res.data.music ? app.globalData.host + res.data.music : "/static/music/background.mp3";
-        this.data.audio.play();
       }
     });
   },
@@ -246,6 +254,9 @@ Page({
             evaluation: res.data,
             questionIndex: 0
           });
+          if (this.data.audio != null && res.data.questions.length > 0) {
+            this.data.audio.play();
+          }
         } else {
           wx.showToast({
             title: '我们好像遇到问题了，换一个量表试试吧。',
