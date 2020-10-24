@@ -72,8 +72,65 @@ Page({
   },
 
   handleLoginClick: function (e) {
-    wx.navigateBack({
-      delta: 0,
-    });
+    if (e.detail.errMsg == "getUserInfo:ok") { // success get user information
+      /* try to login in service */
+      wx.showToast({
+        title: '登录中...',
+        icon: "loading",
+        mask: true
+      })
+      wx.login({
+        success(res) {
+          if (res.code) {
+            //发起网络请求
+            wx.request({
+              url: app.globalData.host + "/wechat/wechat_login/",
+              method: "POST",
+              data: {
+                "code": res.code,
+                "nickName": e.detail.userInfo.nickName,
+                "gender": e.detail.userInfo.gender,
+                "avatarUrl": e.detail.userInfo.avatarUrl
+              },
+              success(res) {
+                // show a toast for sucessful login
+                wx.showToast({
+                  title: '登录成功',
+                  icon: "success"
+                });
+                // set global token
+                app.globalData.token = res.token;
+                // set global user information
+                app.globalData.userInfo = e.detail;
+
+                wx.navigateBack({
+                  delta: 0,
+                });
+              },
+              fail(res) {
+                wx.showToast({
+                  title: '登录失败，请重试。' + res.msg,
+                });
+              }
+            })
+          } else {
+            console.log('登录失败！' + res.errMsg)
+          }
+        }
+      })
+    } else { // faild
+      wx.showToast({
+        title: '请允许获取用户信息',
+        icon: 'none'
+      });
+    }
+
+  },
+
+  /**
+   * login by user information
+   */
+  userLogin: function (userInfo) {
+
   }
 })

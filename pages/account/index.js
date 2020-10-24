@@ -7,7 +7,7 @@ Page({
    */
   data: {
     titleBarHeight: app.globalData.titleBarHeight,
-    userInfo: app.globalData.userInfo
+    userInfo:  null
   },
 
   /**
@@ -16,7 +16,7 @@ Page({
   onLoad: function (options) {
     if (app.globalData.userInfo) {
       this.setData({
-        userInfo: app.globalData.userInfo
+        userInfo: app.globalData.userInfo.userInfo
       })
     }
   },

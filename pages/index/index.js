@@ -24,7 +24,7 @@ Page({
     console.log(app.globalData.userInfo)
     if (app.globalData.userInfo) {
       this.setData({
-        userInfo: app.globalData.userInfo,
+        userInfo: app.globalData.userInfo.userInfo,
         hasUserInfo: true
       })
     } else if (this.data.canIUse) {
