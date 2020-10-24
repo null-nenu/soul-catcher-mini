@@ -6,8 +6,8 @@
         <view class="left" style="height:{{titleBarHeight}}px; width:{{titleBarHeight}}px" bindtap="handleBackClick">
           <text class="fa fa-chevron-left left"></text>
         </view>
-        <view>
-          <text>测试中 [ {{questionIndex + 1}} / {{questions.length}} ]</text>
+        <view class="title">
+          <text class="navigation-title">测试中 [ {{questionIndex + 1}} / {{evaluation.questions.length}} ]</text>
         </view>
       </view>
     </navigation>
@@ -19,23 +19,22 @@
         </view>
       </view>
       <view style="height: 16rpx;"></view>
-      <view wx:if="{{questionIndex > -1 && questionIndex < questions.length}}" class="question">
+      <view wx:if="{{questionIndex > -1 && questionIndex < evaluation.questions.length}}" class="question">
         <!-- question detail text -->
         <view>
-          <view class="question-tip">题目</view>
           <view class="question-text question-card">
-            {{questions[questionIndex].question}}
+            {{questionIndex + 1}}. {{evaluation.questions[questionIndex].content}}
           </view>
         </view>
 
         <view style="height: 64rpx;"></view>
         <!-- question options text -->
         <view class="question-options">
-          <view class="question-tip">选项</view>
+          <!--view class="question-tip">选项</view-->
           <view>
-            <view wx:for="{{questions[questionIndex].options}}" wx:for-item="option" bindtap="handleOptionClick"
-              class="question-option row question-card">
-              <view>{{option.text}}</view>
+            <view wx:for="{{evaluation.questions[questionIndex].options}}" wx:for-item="option" bindtap="handleOptionClick"
+              class="question-option row question-card" data-id="{{option.id}}">
+              <view>{{option.content}}</view>
             </view>
           </view>
         </view>

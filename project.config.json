@@ -77,10 +77,10 @@
           "scene": null
         },
         {
-          "id": -1,
+          "id": 1,
           "name": "pages/question/index",
           "pathName": "pages/question/index",
-          "query": "",
+          "query": "id=1",
           "scene": null
         },
         {
@@ -101,6 +101,14 @@
           "id": -1,
           "name": "pages/login/index",
           "pathName": "pages/login/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 5,
+          "name": "pages/tip/index",
+          "pathName": "pages/tip/index",
+          "query": "id=1",
           "scene": null
         }
       ]

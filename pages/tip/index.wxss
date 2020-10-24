@@ -1,0 +1,48 @@
+/* pages/tip/index.wxss */
+.tip-index {
+  background: rgba(245, 245, 245, 0.7);
+  min-height: 100vh;
+}
+
+.navigation-wrap .left:active {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+.evaluation-wrap {
+  display: flex;
+  flex-direction: column;
+  background: rgba(220, 220, 220, 0.25);
+  padding: 16rpx;
+  border-radius: 16rpx;
+}
+
+.evaluation-wrap .title {
+  margin-bottom: 32rpx;
+  color: rgba(105, 105, 105, 1);
+  font-weight: bold;
+}
+
+.evaluation-wrap .detail {
+  margin-bottom: 16rpx;
+  color: rgba(105, 105, 105, 1);
+}
+
+.evaluation-wrap .warning {
+  color: rgba(105, 105, 105, 1);
+}
+
+.navigate-wrap{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.navigate-button {
+  width: 200rpx;
+  background: rgba(220, 220, 220, 0.7);
+  padding: 16rpx;
+  border-radius: 16rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 64rpx;
+}

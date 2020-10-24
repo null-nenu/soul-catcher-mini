@@ -12,7 +12,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
-    
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -44,14 +44,23 @@ App({
           this.globalData.titleBarHeight = 54
         }
       },
-      fail:(err)=>console.log(err)
+      fail: (err) => console.log(err)
     });
+
+    /* get app config */
+    wx.request({
+      url: this.globalData.host + "/api/setting/app_config/",
+      success: (res) => {
+        this.globalData.config = res.data;
+      }
+    })
   },
   globalData: {
     userInfo: null,
     systemInfo: null,
     titleBarHeight: 44,
     statusBarHeight: 20,
-    host: 'http://localhost/api'
+    host: 'http://localhost',
+    config: {}
   }
 })

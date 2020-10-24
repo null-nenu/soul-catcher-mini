@@ -9,15 +9,34 @@ Page({
   data: {
     titleBarHeight: app.globalData.titleBarHeight,
     isMusic: true,
-    questions: [],
-    questionIndex: -1
+    evaluation: [],
+    questionIndex: -1,
+    id: 0,
+    music: "",
+    audio: {},
+    choise: []
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    this.fetchQuestions();
+    this.setData(options.id);
+    this.fetchConfig();
+    this.setData({
+      audio: wx.createInnerAudioContext()
+    });
+    if (options.id) {
+      this.fetchEvaluationDetail(options.id);
+    } else { // can't get id, show error and back
+      wx.showToast({
+        title: '我们好像遇到问题了，换一个量表试试吧。',
+        icon: 'none'
+      });
+      wx.navigateBack({
+        delta: 0,
+      });
+    }
   },
 
   /**
@@ -31,21 +50,24 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-
+    if (this.data.audio.paused) {
+      this.data.audio.play();
+    }
   },
 
   /**
    * Lifecycle function--Called when page hide
    */
   onHide: function () {
-
+    this.data.audio.stop();
   },
 
   /**
    * Lifecycle function--Called when page unload
    */
   onUnload: function () {
-
+    this.data.audio.stop();
+    //this.data.audio.destory();
   },
 
   /**
@@ -87,95 +109,23 @@ Page({
     })
   },
 
-  /**
-   * @param testId
-   */
-  fetchQuestions: function (testId) {
-    wx.showLoading({
-      title: '加载中...',
-      mask: true
-    });
-
-    setTimeout((testId) => {
-      let questions = [{
-          id: 0,
-          question: "我觉得闷闷不乐，情绪低沉",
-          options: [{
-              id: 0,
-              text: "没有或很少时间"
-            },
-            {
-              id: 0,
-              text: "小部分时间"
-            },
-            {
-              id: 0,
-              text: "相当多时间"
-            }, {
-              id: 0,
-              text: "绝大部分或全部时间"
-            }
-          ]
-        },
-        {
-          id: 1,
-          question: "我觉得一天中早晨最好",
-          options: [{
-              id: 0,
-              text: "没有或很少时间"
-            },
-            {
-              id: 0,
-              text: "小部分时间"
-            },
-            {
-              id: 0,
-              text: "相当多时间"
-            }, {
-              id: 0,
-              text: "绝大部分或全部时间"
-            }
-          ]
-        },
-        {
-          id: 0,
-          question: "一阵阵哭出来或觉得想哭",
-          options: [{
-              id: 0,
-              text: "没有或很少时间"
-            },
-            {
-              id: 0,
-              text: "小部分时间"
-            },
-            {
-              id: 0,
-              text: "相当多时间"
-            }, {
-              id: 0,
-              text: "绝大部分或全部时间"
-            }
-          ]
-        }
-      ];
-
-      this.setData({
-        questions: questions,
-        questionIndex: 0
-      });
-
-      wx.hideLoading();
-    }, 3000);
-  },
-
+  /** control musicl play or stop */
   handleMusicClick: function () {
-    this.setData({
-      isMusic: !this.data.isMusic
-    });
+    if (this.data.audio.paused) {
+      this.data.audio.play();
+      this.setData({
+        isMusic: true
+      });
+    } else {
+      this.data.audio.pause();
+      this.setData({
+        isMusic: false
+      });
+    }
   },
 
   handleOptionClick: function (e) {
-    if (this.data.questionIndex < this.data.questions.length - 1) {
+    if (this.data.questionIndex < this.data.evaluation.questions.length - 1) {
       this.animate('.container', [{
           opacity: 1.0,
           //rotate: 0,
@@ -218,17 +168,94 @@ Page({
           opacity: true,
           rotate: true
         }, function () {
-          
+
         })
-      }.bind(this))
+      }.bind(this));
+
+      if (e.currentTarget.dataset.id !== null) {
+        let new_choise = this.data.choise;
+        new_choise.push(e.currentTarget.dataset.id);
+        this.setData({
+          choise: new_choise
+        });
+      }
 
       this.setData({
         questionIndex: this.data.questionIndex + 1
       });
+
     } else {
-      wx.redirectTo({
-        url: "/pages/score/index",
+      let new_choise = this.data.choise;
+      if (e.currentTarget.dataset.id !== null) {
+        new_choise.push(e.currentTarget.dataset.id);
+        this.setData({
+          choise: new_choise
+        });
+      }
+
+      wx.showLoading({
+        title: '评测中...',
+      });
+
+      let postData = {
+        evaluation: this.data.evaluation.id,
+        question: this.data.evaluation.questions.map((item) => item.id),
+        options: new_choise
+      }
+
+      wx.request({
+        url: app.globalData.host + "/api/evaluation/score/",
+        method: 'POST',
+        data: postData,
+        success: (res) => {
+          wx.hideLoading({});
+          wx.redirectTo({
+            url: "/pages/score/index?id=" + res.data.id,
+          });
+        }
       });
     }
+  },
+
+  /** fetch app config (get background music) */
+  fetchConfig: function () {
+    wx.request({
+      url: app.globalData.host + "/api/setting/app_config/",
+      success: (res) => {
+        this.setData({
+          music: app.globalData.host + res.data.music
+        });
+
+        this.data.audio.src = res.data.music ? app.globalData.host + res.data.music : "/static/music/background.mp3";
+        this.data.audio.play();
+      }
+    });
+  },
+
+  /** fetch a evaluation by id */
+  fetchEvaluationDetail: function (id) {
+    wx.showLoading({
+      title: '加载量表中...',
+    });
+    wx.request({
+      url: app.globalData.host + "/api/evaluation/" + id + "/details/",
+      success: (res) => {
+        wx.hideLoading({});
+        if (res.data.questions.length > 0) {
+          this.setData({
+            evaluation: res.data,
+            questionIndex: 0
+          });
+        } else {
+          wx.showToast({
+            title: '我们好像遇到问题了，换一个量表试试吧。',
+            icon: 'none'
+          });
+          wx.navigateBack({
+            delta: 0,
+          });
+        }
+      }
+    });
   }
 })

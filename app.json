@@ -9,7 +9,8 @@
     "pages/account/index",
     "pages/login/index",
     "pages/about/index",
-    "pages/destroy/index"
+    "pages/destroy/index",
+    "pages/tip/index"
   ],
   "window": {
     "navigationStyle": "custom",

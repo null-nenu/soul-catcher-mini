@@ -1,0 +1,33 @@
+<!--pages/tip/index.wxml-->
+<view class="tip-index">
+  <page>
+    <navigation slot="navigation">
+      <view class="navigation-wrap">
+        <view class="left" style="height:{{titleBarHeight}}px; width:{{titleBarHeight}}px" bindtap="handleBackClick">
+          <text class="fa fa-chevron-left left"></text>
+        </view>
+      </view>
+    </navigation>
+    <view slot="container">
+      <view class="container">
+        <view class="evaluation-wrap">
+          <!-- title -->
+          <view class="title">
+            [ {{evaluation.id}} ] {{evaluation.name}}
+          </view>
+          <!-- detail -->
+          <view class="detail">
+            {{evaluation.detail}}
+          </view>
+          <!-- warning -->
+          <view class="warning">
+            {{evaluation.warning}}
+          </view>
+        </view>
+        <view class="navigate-wrap">
+          <navigator class="navigate-button" open-type="redirect" url="/pages/question/index?id={{evaluation.id}}">开始测试</navigator>
+        </view>
+      </view>
+    </view>
+  </page>
+</view>

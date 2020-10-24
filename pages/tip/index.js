@@ -1,4 +1,4 @@
-// pages/tests/index.js
+// pages/tip/index.js
 const app = getApp();
 Page({
 
@@ -7,21 +7,23 @@ Page({
    */
   data: {
     titleBarHeight: app.globalData.titleBarHeight,
-    evaluations: []
+    id: 0,
+    evaluation: {}
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    this.setData(options.id);
+    this.fetchEvaluation(options.id);
   },
 
   /**
    * Lifecycle function--Called when page is initially rendered
    */
   onReady: function () {
-    this.fetchEvaluation();
+
   },
 
   /**
@@ -65,28 +67,25 @@ Page({
   onShareAppMessage: function () {
 
   },
+
   handleBackClick: function () {
     wx.navigateBack({
       delta: 0,
     })
   },
 
-  handleRedirectClick: function (e) {
-    wx.redirectTo({
-      url: "/pages/question/index",
-    })
-  },
-
-  fetchEvaluation: function () {
+  fetchEvaluation: function (id) {
     wx.showLoading({
       title: '加载量表中...',
     });
     wx.request({
-      url: app.globalData.host + '/api/evaluation/',
+      url: app.globalData.host + '/api/evaluation/' + id + '/',
       success: (res) => {
         wx.hideLoading({});
-        this.setData({evaluations: res.data});
+        this.setData({
+          evaluation: res.data
+        });
       }
-    })
+    });
   }
 })

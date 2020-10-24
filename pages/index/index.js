@@ -11,7 +11,7 @@ Page({
     titleBarHeight: app.globalData.titleBarHeight,
     /* home page config */
     dailyWords: "你从来不是一座孤岛",
-    backgroundImage: "https://s1.ax1x.com/2020/10/12/0RqHvF.jpg",
+    backgroundImage: "/static/images/background.jpg",
     userLogo: "https://img.ecartelera.com/noticias/42300/42348-m.jpg"
   },
   //事件处理函数
@@ -21,7 +21,7 @@ Page({
     })
   },
   onLoad: function () {
-    console.log(app.globalData.userInfo)
+    this.fetchConfig();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo.userInfo,
@@ -49,10 +49,14 @@ Page({
       })
     }
   },
+
+  onShow: function () {
+  },
+
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
-    
+
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
@@ -78,6 +82,18 @@ Page({
   handleLoginClick: function () {
     wx.navigateTo({
       url: "/pages/login/index",
+    });
+  },
+
+  fetchConfig: function () {
+    wx.request({
+      url: app.globalData.host + "/api/setting/app_config/",
+      success: (res) => {
+        this.setData({
+          backgroundImage: res.data.background ? app.globalData.host + res.data.background : this.data.backgroundImage,
+          dailyWords: res.data.solgan ? res.data.solgan : this.data.dailyWords
+        });
+      }
     });
   }
 })

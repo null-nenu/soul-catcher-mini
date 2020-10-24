@@ -1,6 +1,6 @@
 /* pages/question/index.wxss */
 .question-index {
-  background: rgba(255, 228, 181, 0.5);
+  background: rgba(245, 245, 245, 0.7);
   min-height: 100vh;
 }
 
@@ -22,7 +22,7 @@
   width: 48rpx;
   height: 48rpx;
   padding: 10rpx;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 165, 0, 0.7);
   justify-content: center;
   align-items: center;
 }
@@ -32,7 +32,7 @@
 }
 
 .music-control .button:active {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 165, 0, 1);
 }
 
 .question .question-tip {
@@ -44,19 +44,21 @@
 
 .question .question-card {
   padding: 32rpx;
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
-  color: rgba(128, 128, 128, 1);
-  border-radius: 32rpx;
-  font-size: 38rpx;
+
+  color: rgba(105, 105, 105, 0.8);
+  border-radius: 16rpx;
+  font-size: 36rpx;
+  border-bottom: dotted 1rpx rgba(105, 105, 105, 0.7);
 }
 
 .question .question-option {
-  margin-bottom: 32rpx;
-  color: rgba(128, 128, 128, 0.8);
+  background: rgba(220, 220, 220, 0.5);
+  color: rgba(105, 105, 105, 1);
+  margin-bottom: 16rpx;
   font-size: 32rpx;
+  border-bottom: none;
 }
 
 .question .question-option:active {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(220, 220, 220, 1);
 }

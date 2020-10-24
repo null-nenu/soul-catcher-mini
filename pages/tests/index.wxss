@@ -1,13 +1,64 @@
 /* pages/tests/index.wxss */
 .tests-index{
-  background: rgba(255, 228, 181, 0.5);
+  background: rgba(245, 245, 245, 0.7);
   min-height: 100vh;
 }
 
 .navigation-wrap .left:active{
-  background-color: rgba(255, 228, 181, 0.7);
+  background-color: rgba(245, 245, 245, 1);
 }
 
 .container{
   padding: 8px;
+}
+
+.tip-wrap{
+  font-size: 28rpx;
+  margin-bottom: 32rpx;
+  color: rgba(105, 105, 105, 0.7);
+  background: rgba(220, 220, 220, 0.25);
+  padding: 16rpx;
+  border-radius: 16rpx;
+}
+
+.card-wrap{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10rpx;
+}
+
+.card{
+  width: 300rpx;
+  height: 200rpx;
+  padding: 16rpx;
+  border-radius: 16rpx;
+  background: rgba(220, 220, 220, 0.5);
+  margin-bottom: 32rpx;
+}
+
+.card navigator{
+  width: 100%;
+  height: 100%;
+}
+
+.card:active{
+  background: rgba(220, 220, 220, 1);
+}
+
+.card .card-tilte{
+  font-weight: bold;
+  margin-bottom: 24rpx;
+  color: rgba(105, 105, 105, 1);
+}
+
+.card .card-body{
+  font-size: 28rpx;
+  display: -webkit-box;
+ word-break: break-all;
+ -webkit-box-orient: vertical;
+ -webkit-line-clamp: 3;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ color: rgba(105, 105, 105, 0.8);
 }
