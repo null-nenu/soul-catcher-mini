@@ -1,0 +1,29 @@
+<!--pages/history/index.wxml-->
+<view class="history-index">
+  <page>
+    <navigation slot="navigation">
+      <view class="navigation-wrap">
+        <view class="left" style="height:{{titleBarHeight}}px; width:{{titleBarHeight}}px" bindtap="handleBackClick">
+          <text class="fa fa-chevron-left left"></text>
+        </view>
+      </view>
+    </navigation>
+    <view slot="container" class="container">
+      <view></view>
+      <view></view>
+      <view class="historys-wrap">
+        <navigator wx:for="{{recordList}}" wx:for-item="record">
+          <view class="record-item">
+            <view>
+              <view class="record-title">{{record.evaluation_name}}</view>
+            </view>
+            <view style="height: 18rpx;"></view>
+            <view>
+              <view class="record-time">{{record.timestamp}}</view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </page>
+</view>

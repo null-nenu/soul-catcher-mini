@@ -7,14 +7,14 @@
           <text class="fa fa-chevron-left left"></text>
         </view>
         <view>
-          <text>登录</text>
+          <text></text>
         </view>
       </view>
     </navigation>
     <view slot="container" class="container">
       <view style="height: 64rpx;"></view>
       <view>
-        <button open-type="getUserInfo" bindgetuserinfo="handleLoginClick">使用微信登录</button>
+        <button class="login-button" open-type="getUserInfo" bindgetuserinfo="handleLoginClick">使用微信登录</button>
       </view>
       
     </view>

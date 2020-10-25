@@ -1,18 +1,18 @@
 /* pages/tests/index.wxss */
-.tests-index{
+.tests-index {
   background: rgba(245, 245, 245, 0.7);
   min-height: 100vh;
 }
 
-.navigation-wrap .left:active{
+.navigation-wrap .left:active {
   background-color: rgba(245, 245, 245, 1);
 }
 
-.container{
+.container {
   padding: 8px;
 }
 
-.tip-wrap{
+.tip-wrap {
   font-size: 28rpx;
   margin-bottom: 32rpx;
   color: rgba(105, 105, 105, 0.7);
@@ -21,14 +21,14 @@
   border-radius: 16rpx;
 }
 
-.card-wrap{
+.card-wrap {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 10rpx;
 }
 
-.card{
+.card {
   width: 300rpx;
   height: 200rpx;
   padding: 16rpx;
@@ -37,28 +37,35 @@
   margin-bottom: 32rpx;
 }
 
-.card navigator{
+.card navigator {
   width: 100%;
   height: 100%;
 }
 
-.card:active{
+.card:active {
   background: rgba(220, 220, 220, 1);
 }
 
-.card .card-tilte{
+.card .card-tilte {
   font-weight: bold;
   margin-bottom: 24rpx;
   color: rgba(105, 105, 105, 1);
+
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.card .card-body{
+.card .card-body {
   font-size: 28rpx;
   display: -webkit-box;
- word-break: break-all;
- -webkit-box-orient: vertical;
- -webkit-line-clamp: 3;
- overflow: hidden;
- text-overflow: ellipsis;
- color: rgba(105, 105, 105, 0.8);
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(105, 105, 105, 0.8);
 }

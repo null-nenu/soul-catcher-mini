@@ -1,9 +1,13 @@
 /* pages/login/index.wxss */
 .login-index {
-  background: rgba(255, 228, 181, 0.5);
+  background: rgba(245, 245, 245, 0.7);
   min-height: 100vh;
 }
 
 .container {
   padding: 8px;
+}
+
+.login-button{
+  background: rgba(220, 220, 220, 0.5);
 }

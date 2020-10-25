@@ -5,8 +5,10 @@
     <view class="header" style="height: {{titleBarHeight}}px">
       <view>
         <!-- user logo -->
-        <avatar wx:if="{{userInfo.avatarUrl != null}}" src="{{userInfo.avatarUrl}}" size="{{titleBarHeight - 5}}" bindtap="handleLogoClick"></avatar>
-        <text wx:if="{{userInfo.avatarUrl == null}}" class="fa fa-user" style="font-size: 48rpx; color: rgba(255, 228, 181, 0.8);" bindtap="handleLoginClick"></text>
+        <avatar wx:if="{{userInfo.avatarUrl != null}}" src="{{userInfo.avatarUrl}}" size="{{titleBarHeight - 5}}"
+          bindtap="handleLogoClick"></avatar>
+        <text wx:if="{{userInfo.avatarUrl == null}}" class="fa fa-user"
+          style="font-size: 48rpx; color: rgba(255, 228, 181, 0.8);" bindtap="handleLoginClick"></text>
       </view>
     </view>
   </navigation>
@@ -25,11 +27,13 @@
   </view>
   <!-- footor -->
   <view class="footor">
-    <view class="row">
+    <view class="row navigators-wrap">
       <!-- stories button -->
-      <button class="button-size-normal button-color-normal" style="width: 100px; padding: 8px;">散散心</button>
+      <navigator class="button-size-normal button-color-normal" style="width: 100px; padding: 8px;"
+        open-type="navigate">散散心</navigator>
       <!-- history button -->
-      <button class="button-size-normal button-color-normal" style="width: 100px; padding: 8px;">看历史</button>
+      <navigator class="button-size-normal button-color-normal" style="width: 100px; padding: 8px;" open-type="navigate"
+        url="/pages/history/index">看历史</navigator>
     </view>
   </view>
 </view>

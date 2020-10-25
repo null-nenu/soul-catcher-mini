@@ -247,6 +247,9 @@ Page({
     });
     wx.request({
       url: app.globalData.host + "/api/evaluation/" + id + "/details/",
+      header: {
+        "Authorization": "Token " + app.globalData.token
+      },
       success: (res) => {
         wx.hideLoading({});
         if (res.data.questions.length > 0) {

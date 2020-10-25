@@ -84,7 +84,7 @@ Page({
           if (res.code) {
             //发起网络请求
             wx.request({
-              url: app.globalData.host + "/wechat/wechat_login/",
+              url: app.globalData.host + "/api/wechat/wechat_login/",
               method: "POST",
               data: {
                 "code": res.code,
@@ -98,11 +98,15 @@ Page({
                   title: '登录成功',
                   icon: "success"
                 });
-                // set global token
-                app.globalData.token = res.token;
+
                 // set global user information
                 app.globalData.userInfo = e.detail;
-
+                app.userInfoReadyCallback(e.detail);
+                // set global token
+                app.globalData.token = res.data.token;
+                // save token to store
+                wx.setStorageSync('token', res.data.token)
+                // navigate back
                 wx.navigateBack({
                   delta: 0,
                 });

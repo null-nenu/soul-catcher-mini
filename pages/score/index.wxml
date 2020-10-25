@@ -33,7 +33,7 @@
       <!-- recommends -->
       <view>
         <view>
-          <view wx:for="{{recommends}}" wx:for-item="recommend" wx:key="{{index}}">
+          <view wx:for="{{recommends}}" wx:for-item="recommend" wx:key="index">
             <navigator url="/pages/viewer/index" open-type="navigate" class="recommend-navigator">
               <view class="row recommend">
                 <image src="{{recommend.image}}"></image>

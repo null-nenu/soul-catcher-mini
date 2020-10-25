@@ -33,7 +33,7 @@
           <!--view class="question-tip">选项</view-->
           <view>
             <view wx:for="{{evaluation.questions[questionIndex].options}}" wx:for-item="option" bindtap="handleOptionClick"
-              class="question-option row question-card" data-id="{{option.id}}">
+              class="question-option row question-card" data-id="{{option.id}}" wx:key="index">
               <view>{{option.content}}</view>
             </view>
           </view>

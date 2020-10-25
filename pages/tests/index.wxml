@@ -15,7 +15,7 @@
         </view>
         <view class="card-wrap">
           <!-- -->
-          <view wx:for="{{evaluations}}" wx:for-item="evaluation">
+          <view wx:for="{{evaluations}}" wx:for-item="evaluation" wx:key="index">
             <navigator url="/pages/tip/index?id={{evaluation.id}}" open-type="navigate" class="card">
               <view class="card-tilte">{{evaluation.name}}</view>
               <view class="card-body">{{evaluation.detail}}</view>

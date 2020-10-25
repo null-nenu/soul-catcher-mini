@@ -10,7 +10,8 @@
     "pages/login/index",
     "pages/about/index",
     "pages/destroy/index",
-    "pages/tip/index"
+    "pages/tip/index",
+    "pages/history/index"
   ],
   "window": {
     "navigationStyle": "custom",

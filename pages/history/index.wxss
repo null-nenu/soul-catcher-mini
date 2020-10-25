@@ -1,0 +1,33 @@
+/* pages/history/index.wxss */
+.history-index {
+  background: rgba(245, 245, 245, 0.7);
+  min-height: 100vh;
+}
+
+.navigation-wrap .left:active {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+.container {
+  padding: 8px;
+}
+
+.historys-wrap{
+  background: rgba(220, 220, 220, 0.5);
+  overflow: hidden;
+  border-radius: 16rpx;
+}
+
+.record-item{
+  padding: 32rpx;
+}
+
+.record-title{
+  color: rgba(105, 105, 105, 0.8);
+}
+
+.record-time{
+  color: rgba(105, 105, 105, 0.5);
+  font-weight: lighter;
+  font-size: 28rpx;
+}

@@ -1,4 +1,4 @@
-// pages/tests/index.js
+// pages/history/index.js
 const app = getApp();
 Page({
 
@@ -6,22 +6,43 @@ Page({
    * Page initial data
    */
   data: {
-    titleBarHeight: app.globalData.titleBarHeight,
-    evaluations: []
+    titleBarHeight: 44,
+    recordList: []
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    // test have token?
+    if (app.globalData.token == undefined) {
+      wx.showToast({
+        title: '只有登录的用户才能查看评测历史哦',
+        icon: "none",
+        success() {
+          setTimeout(() => {
+            wx.navigateBack({
+              delta: 0,
+            });
+          }, 1000);
+        }
+      });
+    } else {
+      this.fetchHistorysList();
+    }
+    // get system information
+    if (app.globalData.titleBarHeight) {
+      this.setData({
+        titleBarHeight: app.globalData.titleBarHeight
+      });
+    }
   },
 
   /**
    * Lifecycle function--Called when page is initially rendered
    */
   onReady: function () {
-    this.fetchEvaluation();
+
   },
 
   /**
@@ -73,22 +94,16 @@ Page({
     })
   },
 
-  handleRedirectClick: function (e) {
-    wx.redirectTo({
-      url: "/pages/question/index",
-    })
-  },
-
-  fetchEvaluation: function () {
-    wx.showLoading({
-      title: '加载量表中...',
-    });
+  /** fetch user test historys list */
+  fetchHistorysList: function () {
     wx.request({
-      url: app.globalData.host + '/api/evaluation/',
+      url: app.globalData.host + "/api/evaluation_record/detailed/",
+      header: {
+        "Authorization": "Token " + app.globalData.token
+      },
       success: (res) => {
-        wx.hideLoading({});
         this.setData({
-          evaluations: res.data
+          recordList: res.data
         });
       }
     })
