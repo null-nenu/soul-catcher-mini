@@ -68,9 +68,9 @@ Page({
 
   /** handle back button click */
   handleBackClick: function () {
-    wx.navigateBack({
-      delta: 0,
-    })
+    wx.redirectTo({
+      url: '/pages/index/index',
+    });
   },
 
   handleRedirectClick: function (e) {

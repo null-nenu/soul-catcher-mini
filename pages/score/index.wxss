@@ -18,12 +18,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250rpx;
-  height: 250rpx;
+  min-width: 250rpx;
+  min-height: 250rpx;
   background: rgba(220, 220, 220, 0.5);
   backdrop-filter: blur(5px);
   color: rgba(105, 105, 105, 0.75);
-  border-radius: 25rpx;
+  border-radius: 16rpx;
+  padding: 16rpx;
 }
 
 .score-text text {
@@ -39,8 +40,11 @@
 }
 
 .recommend-navigator {
-  background: rgba(255, 255, 255, 0.4);
   padding: 32rpx;
+}
+
+.recommend-navigator .title {
+  color: rgba(105, 105, 105, 0.5);
 }
 
 .recommend image {
@@ -57,4 +61,28 @@
 .recommend .detail {
   height: 50%;
   font-size: 24rpx;
+}
+
+.text-wrap {
+  background: rgba(220, 220, 220, 0.8);
+  padding: 16rpx;
+  border-radius: 16rpx;
+}
+
+.text-content {
+  color: rgba(105, 105, 105, 0.7);
+  font-size: 28rpx;
+}
+
+.text-title {
+  color: rgba(105, 105, 105, 0.8);
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.recommends-wrap {
+  background: rgba(220, 220, 220, 0.8);
+  overflow: hidden;
+  border-radius: 16rpx;
 }

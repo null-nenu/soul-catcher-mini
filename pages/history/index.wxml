@@ -9,10 +9,21 @@
       </view>
     </navigation>
     <view slot="container" class="container">
-      <view></view>
+      <view class="overview-wrap">
+        <view class="overview-item">
+          <text class="overview-name">测试次数</text>
+          <text class="overview-value">{{overview.Test}}</text>
+        </view>
+        <view class="overview-item">
+          <text class="overview-name">趋势</text>
+          <text  class="overview-value">{{overview.Trend}}</text>
+        </view>
+      </view>
       <view></view>
       <view class="historys-wrap">
-        <navigator wx:for="{{recordList}}" wx:for-item="record" wx:key="index">
+        <navigator wx:for="{{recordList}}" wx:for-item="record" wx:key="index"
+        url="/pages/score/index?id={{record.id}}"
+        >
           <view class="record-item">
             <view>
               <view class="record-title">{{record.evaluation_name}}</view>

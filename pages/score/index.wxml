@@ -29,22 +29,25 @@
           </view>
         </view>
       </view>
-      <view style="height: 64rpx;"></view>
+      <view style="height:38rpx;"></view>
+      <view class="text-wrap">
+        <view class="text-title">结果分析</view>
+        <view class="text-content">{{detail.analysis}}</view>
+      </view>
+      <view style="height: 32rpx;"></view>
+      <view class="text-wrap">
+        <view class="text-title">改善建议</view>
+        <view class="text-content">{{detail.advice}}</view>
+      </view>
+      <view style="height:38rpx;"></view>
       <!-- recommends -->
-      <view>
+      <view class="recommends-wrap">
+        <view class="text-title" style="padding: 16rpx;">散散心吧</view>
         <view>
-          <view wx:for="{{recommends}}" wx:for-item="recommend" wx:key="index">
-            <navigator url="/pages/viewer/index" open-type="navigate" class="recommend-navigator">
-              <view class="row recommend">
-                <image src="{{recommend.image}}"></image>
-                <view style="width: 32rpx;"></view>
-                <view>
-                  <view class="title">{{recommend.title}}</view>
-                  <view class="detail">{{recommend.text}}</view>
-                </view>
-              </view>
-            </navigator>
-          </view>
+          <navigator wx:for="{{recommends}}" wx:for-item="recommend" wx:key="index" open-type="navigate"
+            url="/pages/viewer/index?id={{recommend.id}}" class="recommend-navigator">
+            <view class="title">{{recommend.title}}</view>
+          </navigator>
         </view>
       </view>
     </view>

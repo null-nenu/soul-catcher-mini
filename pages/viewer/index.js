@@ -1,18 +1,22 @@
 // pages/viewer/index.js
+const app = getApp();
 Page({
 
   /**
    * Page initial data
    */
   data: {
-
+    id: 0,
+    url: ""
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    this.fetchData();
+    if (options.id) {
+      this.fetchStory(options.id);
+    }
   },
 
   /**
@@ -25,8 +29,7 @@ Page({
   /**
    * Lifecycle function--Called when page show
    */
-  onShow: function () {
-  },
+  onShow: function () {},
 
   /**
    * Lifecycle function--Called when page hide
@@ -59,20 +62,25 @@ Page({
   /**
    * Called when user click on the top right corner to share
    */
-  onShareAppMessage: function () {
-  },
+  onShareAppMessage: function () {},
 
-  fetchData(id) {
+  fetchStory: function (id) {
     wx.showLoading({
       title: "加载中...",
     });
 
-    setTimeout(() => {
-      wx.hideLoading();
-
-      wx.setNavigationBarTitle({
-        title: '文章标题',
-      });
-    }, 3000);
+    wx.request({
+      url: app.globalData.host + '/api/story/' + id + "/",
+      success: (res) => {
+        wx.hideLoading();
+        this.setData({
+          id: res.data.id,
+          url: app.globalData.host + res.data.url
+        });
+        wx.setNavigationBarTitle({
+          title: res.data.title,
+        });
+      }
+    })
   }
 })

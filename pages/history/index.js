@@ -7,7 +7,8 @@ Page({
    */
   data: {
     titleBarHeight: 44,
-    recordList: []
+    recordList: [],
+    overview: {}
   },
 
   /**
@@ -29,6 +30,7 @@ Page({
       });
     } else {
       this.fetchHistorysList();
+      this.fetchHistoryOverview();
     }
     // get system information
     if (app.globalData.titleBarHeight) {
@@ -96,6 +98,10 @@ Page({
 
   /** fetch user test historys list */
   fetchHistorysList: function () {
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
     wx.request({
       url: app.globalData.host + "/api/evaluation_record/detailed/",
       header: {
@@ -105,6 +111,24 @@ Page({
         this.setData({
           recordList: res.data
         });
+        wx.hideLoading({});
+      },
+      fail() {
+        wx.hideLoading({});
+      }
+    })
+  },
+
+  fetchHistoryOverview: function () {
+    wx.request({
+      url: app.globalData.host + "/api/evaluation_record/overview/",
+      header: {
+        "Authorization": "Token " + app.globalData.token
+      },
+      success: (res) => {
+        this.setData({
+          overview: res.data
+        })
       }
     })
   }

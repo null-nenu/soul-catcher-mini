@@ -1,0 +1,24 @@
+/* pages/story/index.wxss */
+.story-index {
+  background: rgba(245, 245, 245, 0.7);
+  min-height: 100vh;
+}
+
+.navigation-wrap .left:active {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+.container {
+  padding: 8px;
+}
+
+.storys-wrap {
+  background: rgba(220, 220, 220, 0.8);
+  overflow: hidden;
+  border-radius: 16rpx;
+}
+
+.story-wrap {
+  color: rgba(105, 105, 105, 0.5);
+  padding: 32rpx;
+}

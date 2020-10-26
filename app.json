@@ -11,7 +11,9 @@
     "pages/about/index",
     "pages/destroy/index",
     "pages/tip/index",
-    "pages/history/index"
+    "pages/history/index",
+    "pages/story/index",
+    "pages/record/index"
   ],
   "window": {
     "navigationStyle": "custom",

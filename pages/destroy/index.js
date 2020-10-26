@@ -66,6 +66,37 @@ Page({
 
   },
 
+  /** fetch account destroy */
+  fetchAccountDestroy: function () {
+    wx.showLoading({
+      title: '删除账号中...',
+    });
+    wx.request({
+      url: app.globalData.host + '/api/user/destory/',
+      method: 'POST',
+      success: (res) => {
+        wx.hideLoading();
+        wx.showToast({
+          title: '全部个人数据已删除',
+        });
+        app.globalData.token = undefined;
+        app.globalData.userInfo = {};
+        wx.removeStorage({
+          key: 'token',
+        });
+        wx.redirectTo({
+          url: "/pages/index/index",
+        });
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: '请求失败，请重试...',
+          icon: 'none'
+        });
+      }
+    })
+  },
+
   handleDestroyClick: function () {
     wx.showModal({
       cancelColor: 'cancelColor',
@@ -73,13 +104,13 @@ Page({
       content: "注意: 本操作将删除账号。",
       confirmText: "确认删除",
       cancelText: "再想想",
-      success(res) {
+      success: (res) => {
         if (res.confirm) {
-          wx.redirectTo({
-            url: "/pages/index/index",
-          })
+          this.fetchAccountDestroy();
         } else if (res.cancel) {
-
+          wx.navigateBack({
+            delta: 0,
+          });
         }
       }
     })
@@ -89,5 +120,7 @@ Page({
     wx.navigateBack({
       delta: 0,
     });
-  }
+  },
+
+
 })

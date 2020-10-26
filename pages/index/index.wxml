@@ -18,7 +18,7 @@
     <!-- start test button -->
     <button class="button-size-large button-color-normal" style="width: 128px; height:128px;"
       bindtap="handleTestsClick">
-      <view>开始测试</view>
+      <view>开始</view>
     </button>
     <!-- daily words -->
     <view style="padding-top: 32px;">
@@ -30,7 +30,7 @@
     <view class="row navigators-wrap">
       <!-- stories button -->
       <navigator class="button-size-normal button-color-normal" style="width: 100px; padding: 8px;"
-        open-type="navigate">散散心</navigator>
+        open-type="navigate" url="/pages/story/index">散散心</navigator>
       <!-- history button -->
       <navigator class="button-size-normal button-color-normal" style="width: 100px; padding: 8px;" open-type="navigate"
         url="/pages/history/index">看历史</navigator>

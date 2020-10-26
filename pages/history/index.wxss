@@ -12,22 +12,55 @@
   padding: 8px;
 }
 
-.historys-wrap{
+.historys-wrap {
   background: rgba(220, 220, 220, 0.5);
   overflow: hidden;
   border-radius: 16rpx;
 }
 
-.record-item{
+.record-item {
   padding: 32rpx;
 }
 
-.record-title{
+.record-title {
   color: rgba(105, 105, 105, 0.8);
 }
 
-.record-time{
+.record-time {
   color: rgba(105, 105, 105, 0.5);
   font-weight: lighter;
   font-size: 28rpx;
+}
+
+.overview-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 16rpx;
+  border-radius: 16rpx;
+  background: rgba(220, 220, 220, 0.25);
+  margin-bottom: 64rpx;
+  justify-content: space-around;
+}
+
+.overview-item {
+  width: 40%;
+  background: rgba(220, 220, 220, 0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 16rpx;
+  border-radius: 16rpx;
+  align-items: flex-end;
+}
+
+.overview-name {
+  color: rgba(105, 105, 105, 0.5);
+  font-size: 24rpx;
+}
+
+.overview-value{
+  color: rgba(105, 105, 105, 0.9);
+  font-size: 42rpx;
+  font-weight: bold;
 }

@@ -1,0 +1,13 @@
+<!--pages/record/index.wxml-->
+<view class="record-index">
+  <page>
+    <navigation slot="navigation">
+      <view class="navigation-wrap">
+        <view class="left" style="height:{{titleBarHeight}}px; width:{{titleBarHeight}}px" bindtap="handleBackClick">
+          <text class="fa fa-chevron-left left"></text>
+        </view>
+      </view>
+    </navigation>
+    <view slot="container" class="container"></view>
+  </page>
+</view>

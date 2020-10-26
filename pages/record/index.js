@@ -1,4 +1,4 @@
-// pages/score/index.js
+// pages/record/index.js
 const app = getApp();
 Page({
 
@@ -15,16 +15,7 @@ Page({
    */
   onLoad: function (options) {
     if (options.id) {
-      this.fetchEvaluationRecord(options.id);
-      this.fetchRecommands(options.id);
-    } else {
-      wx.showToast({
-        title: '我们遇到了一点小问题，请原谅。',
-      });
-
-      wx.redirectTo({
-        url: '/pages/index/index',
-      });
+      this.fetchEvaluationRecord(options.id)
     }
   },
 
@@ -77,13 +68,11 @@ Page({
 
   },
 
+  /** handle back button click */
   handleBackClick: function () {
     wx.navigateBack({
       delta: 0,
-    });
-    /*wx.redirectTo({
-      url: "/pages/index/index",
-    });*/
+    })
   },
   /** fetch evaluation record detailsF */
   fetchEvaluationRecord: function (id) {
@@ -100,16 +89,5 @@ Page({
         })
       }
     });
-  },
-
-  fetchRecommands: function (id) {
-    wx.request({
-      url: app.globalData.host + '/api/story/recommend/?id=' + id,
-      success: (res) => {
-        this.setData({
-          recommends: res.data
-        });
-      }
-    })
   }
 })

@@ -7,7 +7,7 @@
           <text class="fa fa-chevron-left left"></text>
         </view>
         <view>
-          <text>我的账号</text>
+          <text></text>
         </view>
       </view>
     </navigation>

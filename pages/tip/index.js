@@ -69,8 +69,8 @@ Page({
   },
 
   handleBackClick: function () {
-    wx.navigateBack({
-      delta: 0,
+    wx.redirectTo({
+      url: '/pages/tests/index',
     })
   },
 

@@ -1,0 +1,22 @@
+<!--pages/story/index.wxml-->
+<view class="story-index">
+  <page>
+    <navigation slot="navigation">
+      <view class="navigation-wrap">
+        <view class="left" style="height:{{titleBarHeight}}px; width:{{titleBarHeight}}px" bindtap="handleBackClick">
+          <text class="fa fa-chevron-left left"></text>
+        </view>
+      </view>
+    </navigation>
+    <view slot="container" class="container">
+      <view class="storys-wrap">
+        <navigator wx:for="{{storys}}" wx:for-item="story" wx:key="index" open-type="navigate"
+          url="/pages/viewer/index?id={{story.id}}" class="story-wrap">
+          <view>
+            <view>{{story.title}}</view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </page>
+</view>
