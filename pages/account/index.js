@@ -7,7 +7,7 @@ Page({
    */
   data: {
     titleBarHeight: app.globalData.titleBarHeight,
-    userInfo:  null
+    userInfo: null
   },
 
   /**
@@ -85,9 +85,17 @@ Page({
       cancelColor: 'cancelColor',
       success: (res) => {
         if (res.confirm) {
-          wx.redirectTo({
-            url: "/pages/index/index",
-          });
+          wx.removeStorage({
+            key: 'token',
+            success: () => {
+              app.globalData.token = undefined;
+              app.globalData.userInfo = {};
+              wx.redirectTo({
+                url: "/pages/index/index",
+              });
+            }
+          })
+
         } else if (res.cancel) {
 
         }

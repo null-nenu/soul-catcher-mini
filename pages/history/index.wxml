@@ -12,7 +12,7 @@
       <view></view>
       <view></view>
       <view class="historys-wrap">
-        <navigator wx:for="{{recordList}}" wx:for-item="record">
+        <navigator wx:for="{{recordList}}" wx:for-item="record" wx:key="index">
           <view class="record-item">
             <view>
               <view class="record-title">{{record.evaluation_name}}</view>
