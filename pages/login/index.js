@@ -114,6 +114,7 @@ Page({
               fail(res) {
                 wx.showToast({
                   title: '登录失败，请重试。' + res.msg,
+                  icon: 'none'
                 });
               }
             })

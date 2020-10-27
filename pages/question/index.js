@@ -28,6 +28,7 @@ Page({
         this.setData({
           audio: wx.createInnerAudioContext()
         });
+        this.data.audio.loop = true;
       }
       this.fetchConfig();
     } else { // can't get id, show error and back
@@ -215,6 +216,9 @@ Page({
       wx.request({
         url: app.globalData.host + "/api/evaluation/score/",
         method: 'POST',
+        header: {
+          "Authorization": app.globalData.token ? "Token " + app.globalData.token : undefined
+        },
         data: postData,
         success: (res) => {
           wx.hideLoading({});
@@ -247,9 +251,6 @@ Page({
     });
     wx.request({
       url: app.globalData.host + "/api/evaluation/" + id + "/details/",
-      header: {
-        "Authorization": "Token " + app.globalData.token
-      },
       success: (res) => {
         wx.hideLoading({});
         if (res.data.questions.length > 0) {

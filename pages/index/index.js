@@ -11,7 +11,7 @@ Page({
     titleBarHeight: app.globalData.titleBarHeight,
     /* home page config */
     dailyWords: "你从来不是一座孤岛",
-    backgroundImage: "/static/images/background.jpg",
+    backgroundImage: app.globalData.host + "/static/images/background.jpg",
     userLogo: ""
   },
 
@@ -70,7 +70,7 @@ Page({
       url: app.globalData.host + "/api/setting/app_config/",
       success: (res) => {
         this.setData({
-          backgroundImage: res.data.background ? app.globalData.host + res.data.background : "/static/images/background.jpg",
+          backgroundImage: res.data.background ? app.globalData.host + res.data.background : app.globalData.host + "/static/images/background.jpg",
           dailyWords: res.data.solgan ? res.data.solgan : this.data.dailyWords
         });
       }

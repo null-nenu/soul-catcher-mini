@@ -75,7 +75,7 @@ App({
     systemInfo: null,
     titleBarHeight: 44,
     statusBarHeight: 20,
-    host: 'http://localhost', //http://39.107.61.225
+    host: 'https://soul.laoyoumoyan.com', //http://39.107.61.225
     config: {}
   }
 })
