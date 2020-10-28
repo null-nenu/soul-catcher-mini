@@ -7,7 +7,10 @@ Page({
    */
   data: {
     id: 0,
-    url: ""
+    url: "",
+    titleBarHeight: app.globalData.titleBarHeight,
+    htmls: "<span style='color: grey;'>内容加载中...</span>",
+    title: ""
   },
 
   /**
@@ -73,12 +76,25 @@ Page({
       url: app.globalData.host + '/api/story/' + id + "/",
       success: (res) => {
         wx.hideLoading();
-        this.setData({
-          id: res.data.id,
-          url: app.globalData.host + res.data.url
-        });
-        wx.setNavigationBarTitle({
-          title: res.data.title,
+        if (res.statusCode == 200) {
+          this.setData({
+            id: res.data.id,
+            url: app.globalData.host + res.data.url,
+            title: res.data.title,
+            htmls: res.data.html
+          });
+        } else {
+          wx.showToast({
+            title: '内容加载失败，请重试...',
+            icon: 'none'
+          });
+        }
+      },
+      fail: (res) => {
+        wx.hideLoading({});
+        wx.showToast({
+          title: '内容加载失败，请重试...',
+          icon: 'none'
         });
       }
     })

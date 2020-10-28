@@ -124,6 +124,13 @@
           "pathName": "pages/record/index",
           "query": "id=1",
           "scene": null
+        },
+        {
+          "id": 8,
+          "name": "pages/viewer/index",
+          "pathName": "pages/viewer/index",
+          "query": "id=1",
+          "scene": null
         }
       ]
     }

@@ -1,1 +1,13 @@
 /* pages/viewer/index.wxss */
+.viewer-index {
+  background: rgba(245, 245, 245, 0.7);
+  min-height: 100vh;
+}
+
+.navigation-wrap .left:active {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+.container {
+  padding: 8px;
+}

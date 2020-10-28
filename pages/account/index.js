@@ -94,10 +94,13 @@ Page({
                 url: "/pages/index/index",
               });
             }
-          })
+          });
 
         } else if (res.cancel) {
-
+          wx.showToast({
+            title: '已取消退出登录操作',
+            icon: 'none'
+          });
         }
       }
     })

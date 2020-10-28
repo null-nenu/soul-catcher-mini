@@ -1,4 +1,20 @@
 <!--pages/viewer/index.wxml-->
-<view>
-  <web-view src="{{url}}"></web-view>
+<view class="viewer-index">
+  <page>
+    <navigation slot="navigation">
+      <view class="navigation-wrap">
+        <view class="left" style="height:{{titleBarHeight}}px; width:{{titleBarHeight}}px" bindtap="handleBackClick">
+          <text class="fa fa-chevron-left left"></text>
+        </view>
+        <view>
+          <text>{{title}}</text>
+        </view>
+      </view>
+    </navigation>
+    <view slot="container" class="container">
+      <view>
+        <rich-text nodes="{{htmls}}"></rich-text>
+      </view>
+    </view>
+  </page>
 </view>

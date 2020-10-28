@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "navigation": "/components/navigation",
+    "page":"/components/page"
+  }
 }

@@ -76,21 +76,29 @@ Page({
       method: 'POST',
       success: (res) => {
         wx.hideLoading();
-        wx.showToast({
-          title: '全部个人数据已删除',
-        });
-        app.globalData.token = undefined;
-        app.globalData.userInfo = {};
-        wx.removeStorage({
-          key: 'token',
-        });
-        wx.redirectTo({
-          url: "/pages/index/index",
-        });
+        if (res.statusCode == 200) {
+          wx.showToast({
+            title: '全部个人数据已删除',
+          });
+          app.globalData.token = undefined;
+          app.globalData.userInfo = {};
+          wx.removeStorage({
+            key: 'token',
+          });
+          wx.redirectTo({
+            url: "/pages/index/index",
+          });
+        } else {
+          wx.showToast({
+            title: '请求失败，请重试...',
+            icon: 'none'
+          });
+        }
       },
       fail: (res) => {
+        wx.hideLoading();
         wx.showToast({
-          title: '请求失败，请重试...',
+          title: '网络问题，请检查后重试...',
           icon: 'none'
         });
       }
