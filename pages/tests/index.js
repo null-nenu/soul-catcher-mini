@@ -87,8 +87,21 @@ Page({
       url: app.globalData.host + '/api/evaluation/',
       success: (res) => {
         wx.hideLoading({});
-        this.setData({
-          evaluations: res.data
+        if (res.statusCode == 200) {
+          this.setData({
+            evaluations: res.data
+          });
+        } else {
+          wx.showToast({
+            title: '我们好像遇到问题了，请稍后再试。',
+            icon: 'none'
+          });
+        }
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: '我们好像遇到问题了，请稍后再试。',
+          icon: 'none'
         });
       }
     })

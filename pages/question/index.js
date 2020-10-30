@@ -137,51 +137,6 @@ Page({
 
   handleOptionClick: function (e) {
     if (this.data.questionIndex < this.data.evaluation.questions.length - 1) {
-      this.animate('.container', [{
-          opacity: 1.0,
-          //rotate: 0,
-          ease: 'ease-out'
-        },
-        {
-          opacity: 0.75,
-          //rotate: 20
-        },
-        {
-          opacity: 0.5,
-          //rotate: 40
-        },
-        {
-          opacity: 0.25,
-          //rotate: 60
-        },
-        {
-          opacity: 0,
-          //rotate: 90
-        },
-        {
-          opacity: 0.25,
-          //rotate: 60
-        },
-        {
-          opacity: 0.5,
-          //rotate: 40
-        },
-        {
-          opacity: 0.75,
-          //rotate: 20
-        },
-        {
-          opacity: 1.0,
-          //rotate: 0
-        },
-      ], 500, function () {
-        this.clearAnimation('.container', {
-          opacity: true,
-          rotate: true
-        }, function () {
-
-        })
-      }.bind(this));
 
       if (e.currentTarget.dataset.id !== null) {
         let new_choise = this.data.choise;
@@ -222,9 +177,16 @@ Page({
         data: postData,
         success: (res) => {
           wx.hideLoading({});
-          wx.redirectTo({
-            url: "/pages/score/index?id=" + res.data.id,
-          });
+          if (res.statusCode == 200) {
+            wx.redirectTo({
+              url: "/pages/score/index?id=" + res.data.id,
+            });
+          } else {
+            wx.showToast({
+              title: '我们好像遇到问题了，一会在试试吧...',
+              icon: 'none'
+            });
+          }
         }
       });
     }
@@ -235,11 +197,14 @@ Page({
     wx.request({
       url: app.globalData.host + "/api/setting/app_config/",
       success: (res) => {
-        this.setData({
-          music: app.globalData.host + res.data.music
-        });
+        if (res.statusCode == 200) {
+          this.setData({
+            music: app.globalData.host + res.data.music
+          });
 
-        this.data.audio.src = res.data.music ? app.globalData.host + res.data.music : "/static/music/background.mp3";
+          this.data.audio.src = res.data.music ? app.globalData.host + res.data.music : "/static/music/background.mp3";
+        } else {}
+
       }
     });
   },
@@ -253,23 +218,34 @@ Page({
       url: app.globalData.host + "/api/evaluation/" + id + "/details/",
       success: (res) => {
         wx.hideLoading({});
-        if (res.data.questions.length > 0) {
-          this.setData({
-            evaluation: res.data,
-            questionIndex: 0
-          });
-          if (this.data.audio != null && res.data.questions.length > 0) {
-            this.data.audio.play();
+        if (res.statusCode == 200) {
+          if (res.data.questions.length > 0) {
+            this.setData({
+              evaluation: res.data,
+              questionIndex: 0
+            });
+            if (this.data.audio != null && res.data.questions.length > 0) {
+              this.data.audio.play();
+            }
+          } else {
+            wx.showToast({
+              title: '我们好像遇到问题了，换一个量表试试吧。',
+              icon: 'none'
+            });
           }
         } else {
           wx.showToast({
             title: '我们好像遇到问题了，换一个量表试试吧。',
             icon: 'none'
           });
-          wx.navigateBack({
-            delta: 0,
-          });
         }
+      },
+      fail: (res) => {
+        wx.hideLoading({});
+        wx.showToast({
+          title: '网络似乎有问题，请稍后重试...',
+          icon: 'none'
+        });
       }
     });
   }

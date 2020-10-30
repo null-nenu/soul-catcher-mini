@@ -73,6 +73,9 @@ Page({
     });
     wx.request({
       url: app.globalData.host + '/api/user/destory/',
+      header: {
+        "Authorization": app.globalData.token ? "Token " + app.globalData.token : undefined
+      },
       method: 'POST',
       success: (res) => {
         wx.hideLoading();

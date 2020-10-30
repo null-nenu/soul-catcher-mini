@@ -93,33 +93,43 @@ Page({
                 "avatarUrl": e.detail.userInfo.avatarUrl
               },
               success(res) {
-                // show a toast for sucessful login
-                wx.showToast({
-                  title: '登录成功',
-                  icon: "success"
-                });
+                if (res.statusCode == 200) {
+                  // show a toast for sucessful login
+                  wx.showToast({
+                    title: '登录成功',
+                    icon: "success"
+                  });
 
-                // set global user information
-                app.globalData.userInfo = e.detail;
-                app.userInfoReadyCallback(e.detail);
-                // set global token
-                app.globalData.token = res.data.token;
-                // save token to store
-                wx.setStorageSync('token', res.data.token)
-                // navigate back
-                wx.navigateBack({
-                  delta: 0,
-                });
+                  // set global user information
+                  app.globalData.userInfo = e.detail;
+                  app.userInfoReadyCallback(e.detail);
+                  // set global token
+                  app.globalData.token = res.data.token;
+                  // save token to store
+                  wx.setStorageSync('token', res.data.token)
+                  // navigate back
+                  wx.navigateBack({
+                    delta: 0,
+                  });
+                } else {
+                  wx.showToast({
+                    title: '登录失败，请重试。' + res.msg,
+                    icon: 'none'
+                  });
+                }
               },
               fail(res) {
                 wx.showToast({
-                  title: '登录失败，请重试。' + res.msg,
+                  title: '网络似乎有点小问题，请稍后重试...',
                   icon: 'none'
                 });
               }
             })
           } else {
-            console.log('登录失败！' + res.errMsg)
+            wx.showToast({
+              title: '登录失败，请重试。' + res.msg,
+              icon: 'none'
+            });
           }
         }
       })
@@ -129,7 +139,6 @@ Page({
         icon: 'none'
       });
     }
-
   },
 
   /**

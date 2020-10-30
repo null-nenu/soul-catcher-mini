@@ -10,6 +10,7 @@
     </navigation>
     <view slot="container" class="container">
       <view class="storys-wrap">
+        <view wx:if="{{storys.length == 0}}" style="color: grey;" class="story-wrap">似乎来到了故事的荒原，不如过几天再来看看吧...</view>
         <navigator wx:for="{{storys}}" wx:for-item="story" wx:key="index" open-type="navigate"
           url="/pages/viewer/index?id={{story.id}}" class="story-wrap">
           <view>

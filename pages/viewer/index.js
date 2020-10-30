@@ -93,10 +93,16 @@ Page({
       fail: (res) => {
         wx.hideLoading({});
         wx.showToast({
-          title: '内容加载失败，请重试...',
+          title: '网络似乎有问题，请稍后重试...',
           icon: 'none'
         });
       }
     })
-  }
+  },
+  /** handle back button click */
+  handleBackClick: function () {
+    wx.navigateBack({
+      delta: 0,
+    })
+  },
 })

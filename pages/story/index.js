@@ -83,18 +83,23 @@ Page({
       url: app.globalData.host + '/api/story/',
       success: (res) => {
         wx.hideLoading();
-        this.setData({
-          storys: res.data
-        });
+        if (res.statusCode == 200) {
+          this.setData({
+            storys: res.data
+          });
+        } else {
+          wx.showToast({
+            title: '加载失败, 请重试...',
+            icon: 'none'
+          });
+        }
+
       },
       fail: (res) => {
         wx.hideLoading();
         wx.showToast({
-          title: '加载失败, 请重试...',
+          title: '网络似乎有问题, 请检查后重试...',
           icon: 'none'
-        });
-        wx.navigateBack({
-          delta: 0,
         });
       }
     })

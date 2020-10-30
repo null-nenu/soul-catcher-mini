@@ -84,9 +84,22 @@ Page({
       url: app.globalData.host + '/api/evaluation_record/' + id + '/details/',
       success: (res) => {
         wx.hideLoading();
-        this.setData({
-          detail: res.data
-        })
+        if (res.statusCode == 200) {
+          this.setData({
+            detail: res.data
+          });
+        } else {
+          wx.showToast({
+            title: '我们好像遇到问题了，请稍后再试。',
+            icon: 'none'
+          });
+        }
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: '网络似乎有小问题，请稍后再试。',
+          icon: 'none'
+        });
       }
     });
   }

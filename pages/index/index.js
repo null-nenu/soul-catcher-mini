@@ -69,9 +69,22 @@ Page({
     wx.request({
       url: app.globalData.host + "/api/setting/app_config/",
       success: (res) => {
-        this.setData({
-          backgroundImage: res.data.background ? app.globalData.host + res.data.background : app.globalData.host + "/static/images/background.jpg",
-          dailyWords: res.data.solgan ? res.data.solgan : this.data.dailyWords
+        if (res.statusCode == 200) {
+          this.setData({
+            backgroundImage: res.data.background ? app.globalData.host + res.data.background : app.globalData.host + "/static/images/background.jpg",
+            dailyWords: res.data.solgan ? res.data.solgan : this.data.dailyWords
+          });
+        } else {
+          wx.showToast({
+            title: '加载失败，请稍后重试...',
+            icon: 'none'
+          });
+        }
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: '网络似乎有问题，请稍后重试...',
+          icon: 'none'
         });
       }
     });

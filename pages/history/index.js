@@ -108,13 +108,24 @@ Page({
         "Authorization": "Token " + app.globalData.token
       },
       success: (res) => {
-        this.setData({
-          recordList: res.data
-        });
         wx.hideLoading({});
+        if (res.statusCode == 200) {
+          this.setData({
+            recordList: res.data
+          });
+        } else {
+          wx.showToast({
+            title: '加载失败，请稍后重试...',
+            icon: 'none'
+          });
+        }
       },
       fail() {
         wx.hideLoading({});
+        wx.showToast({
+          title: '网络似乎有问题，请稍后重试...',
+          icon: 'none'
+        });
       }
     })
   },
@@ -126,9 +137,22 @@ Page({
         "Authorization": "Token " + app.globalData.token
       },
       success: (res) => {
-        this.setData({
-          overview: res.data
-        })
+        if (res.statusCode == 200) {
+          this.setData({
+            overview: res.data
+          })
+        } else {
+          wx.showToast({
+            title: '加载失败，请稍后重试...',
+            icon: 'none'
+          });
+        }
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: '网络似乎有问题，请稍后重试...',
+          icon: 'none'
+        });
       }
     })
   }
